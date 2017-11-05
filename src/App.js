@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     //local variables
-    this.poop = marked('I *am* ~~using~~ __markdown__.'); //returns an html encoded string
+    this.poop = marked('This *is* ~~text~~ `encoded` in __markdown__.'); //returns an html encoded string
     //set the state
     // this.state = {
     // };
@@ -22,7 +22,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        
+
         { ReactHtmlParser(this.poop) }
 
       </div>
