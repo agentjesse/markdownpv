@@ -1,3 +1,49 @@
 .App {
-  text-align: center;
+  min-width: 300px;
+  padding-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+textarea{
+  width: 45%;
+  height: 20rem;
+  background-color: rgb(0, 44, 49);
+  overflow: auto;
+  border: 3px solid rgb(17, 143, 143);
+  border-radius: 0.5rem;
+  padding: 1rem 0.75rem;
+  resize: none;
+	font-size: 1rem;
+  color: rgb(244, 254, 255);
+}
+
+.parsedText{
+  width: 45%;
+  height: 22rem;
+  background-color: rgb(255, 255, 255);
+  overflow: auto;
+  border: 3px solid rgb(40, 172, 172);
+  border-radius: 0.5rem;
+  padding: 0 0.75rem;
+}
+
+/*natural break media query */
+@media (max-width: 600px) {
+  .App{
+    padding-top: 0.75rem;
+    justify-content: center;
+    align-content: flex-end;
+    /* align-items: center; */
+  }
+
+  textarea{
+    width: 87%;
+  }
+  
+  .parsedText{
+    margin-top: 0.75rem;
+    width: 87%;
+  }
 }

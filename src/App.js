@@ -1,29 +1,40 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import marked from 'marked';
-// import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import ReactHtmlParser from 'react-html-parser';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    //local variables
-    this.poop = marked('This *is* ~~text~~ `encoded` in __markdown__.'); //returns an html encoded string
     //set the state
-    // this.state = {
-    // };
+    this.state = {
+      textAreaValue: 'This *is* ~~text~~ `encoded` in __markdown__.\n## Edit markdown for live preview',
+      reactElement: undefined
+    };
   }
 
-  // componentDidMount(){
-  //   console.log(  );
-  // }
+  //initial page load: read value from textarea and then trigger conversion
+  componentDidMount(){ this.startConvert( document.querySelector("textarea").value ); }
+  
+  startConvert(mdString){
+    // console.log( ReactHtmlParser( marked(mdString) ) );
+    this.setState({
+      textAreaValue: mdString,
+      reactElement: ReactHtmlParser( marked(mdString) )
+    });
+  }
 
   render() {
     return (
       <div className="App">
 
-        { ReactHtmlParser(this.poop) }
+        <textarea 
+          onInput={()=>{ 
+            this.startConvert( document.querySelector("textarea").value );
+          }}
+        >{this.state.textAreaValue}</textarea>
+
+        <div className='parsedText'>{this.state.reactElement}</div>
 
       </div>
     );
